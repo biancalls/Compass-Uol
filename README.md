@@ -4,16 +4,16 @@
 
 ## **Sobre mim:**
 
-***Localizacao:** Teresina-Piaui, Brasil
+**Localizacao:** Teresina-Piaui, Brasil
 
-***Instituicao de Ensino:** Senac Ead
+**Instituicao de Ensino:** Senac Ead
 
-***Curso:** Tecnico em Defesa Cibernetica
+**Curso:** Tecnico em Defesa Cibernetica
 
 ***Semestre Atual:** 2 semestre
 
-***Experiencias:** Cursando estagio em CompassUol
+**Experiencias:** Cursando estagio em CompassUol
 
-***Conhecimentos:** Python, Linux e Git 
+**Conhecimentos:** Python, Linux e Git 
 
-***Hobbies:** Cozinha, Filmes e Leitura
+**Hobbies:** Cozinha, Filmes e Leitura
