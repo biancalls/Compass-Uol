@@ -18,5 +18,5 @@
 
 **Hobbies:** Cozinha, Filmes e Leitura
 
-## ** Sprints**
+## **Sprints**
 
