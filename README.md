@@ -10,7 +10,7 @@
 
 **Curso:** Tecnico em Defesa Cibernetica
 
-***Semestre Atual:** 2 semestre
+**Semestre Atual:** 2 semestre
 
 **Experiencias:** Cursando estagio em CompassUol
 
