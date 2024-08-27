@@ -1,4 +1,4 @@
-#!/Documents/Downloads/Sprint_1/Desafio/ecommerce
+#!/Sprint_1/Desafio/ecommerce
 mkdir vendas
 cp dados_de_vendas.csv vendas
 cd ./vendas/
@@ -24,3 +24,5 @@ zip -r backup-dados-$hoje.zip backup-dados-$hoje.csv
 rm dados_de_vendas.csv
 cd ./backup
 rm backup-dados-$hoje.csv
+
+
