@@ -1,4 +1,4 @@
-#! /Documents/Downloads/Sprint_1/Desafio/ecommerce
+#!/Documents/Downloads/Sprint_1/Desafio/ecommerce
 mkdir vendas
 cp dados_de_vendas.csv vendas
 cd ./vendas/
