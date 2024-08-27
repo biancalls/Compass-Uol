@@ -19,8 +19,11 @@
 **😃 Hobbies:** Cozinha, Filmes e Leitura
 
 ## **Idiomas:**
+
 **🇧🇷 Portugues-BR:** Nativo
+
 **🇺🇸 Ingles:** Avançado
+
 **🇪🇸 Espanhol:** Basico
 
 ## **Sprints**
