@@ -1,4 +1,4 @@
-cd /home/biancalages/Downloads/Sprint_1/Sprint_1/Desafio/ecommerce
+cd /home/biancalages/Downloads/Sprint_1/Git_Linux/Desafio/ecommerce/processamento_de_vendas.sh
 mkdir vendas
 cp dados_de_vendas.csv vendas
 cd vendas
