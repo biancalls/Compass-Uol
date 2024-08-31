@@ -42,7 +42,7 @@ Foi feito um agendamento de executação do script contido no arquivo.sh process
 
 **5. Criando um novo relátorio**
 
-Ao final dos processamentos diarios, foi pedido um  script em um novo arquivo.sh executável consolidador_de_processamento_de_vendas.sh que consolidasse todos os arquivos.txt gerados em outro arquivo relatorio_final.txt 
+Ao final dos processamentos diarios, foi pedido um  script em um novo arquivo.sh executável consolidador_de_processamento_de_vendas.sh que consolidasse todos os arquivos.txt gerados em unico outro arquivo relatorio_final.txt 
 
 
 ![Secreenshots do codigo consolidador
