@@ -45,10 +45,8 @@ Foi feito um agendamento de executação do script contido no arquivo.sh process
 Ao final dos processamentos diarios, foi pedido um  script em um novo arquivo.sh executável consolidador_de_processamento_de_vendas.sh que consolidasse todos os arquivos.txt gerados em unico outro arquivo relatorio_final.txt 
 
 
-![Secreenshots do codigo consolidador
+![Consolidador](https://github.com/biancalls/BiancaLages/blob/main/Evidencias/Screenshot%20from%202024-08-31%2016-22-15.png)
 
-
-![Scrennshots do tree 
 
 ## **Dificuldades**
 
