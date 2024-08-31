@@ -26,7 +26,7 @@
 
 **🇪🇸 Espanhol:** Basico
 
-**Contribuidor principal:** https://github.com/biancalls
+[**Contribuidor principal**](https://github.com/biancalls)
 
 ## **Sprints**
 
