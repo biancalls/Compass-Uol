@@ -43,9 +43,17 @@ Foi feito um agendamento de executação do script contido no arquivo.sh process
 
 **5. Criando um novo relátorio**
 
+Ao final dos processamentos diarios, foi pedido um  script em um novo arquivo.sh executável consolidador_de_processamento_de_vendas.sh que consolidasse todos os arquivos.txt gerados em outro arquivo relatorio_final.txt 
 
 
+![Secreenshots do codigo consolidador
 
+
+![Scrennshots do tree 
+
+## **Dificuldades**
+
+Durante a execução desse desafio enfretei algumas dificuldades tecnicas, devido a falta de experiência na área e com os programas em questão (Git e Linux). Erros de grafia de comamdos, fiz comandos errados que me resultou na perda de arquivos e diretórios, tive problemas configuração inicial do git hub e do linux , que me tiram dias de rendimento porém adquiri conhecimentos durante a resolução desse problemas, além do material didatico disponibilizado para mim, a minha turma do estágio e meu SQUAD ajudaram significativamente, assim como os foruns dessas plataformas, pequisas onlines e videos no youtube me ajudaram a compreender o linguajar e tecnico dessas plataformas para a conclusão desse desafio. 
 
 
 
