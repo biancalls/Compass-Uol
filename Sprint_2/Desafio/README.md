@@ -60,4 +60,9 @@ Foi extraido tambem a dimensao por localização com a tabela endereco_locacao c
 ![endereco_cliente](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2022-03-08.png)
 
 
+**ERD**
+Depois da normazilacao e dimensionamento do banco de dados, assim que ficou o ERD 
+
+![ERD](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2023-04-41.png)
+
 
