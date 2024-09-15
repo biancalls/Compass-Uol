@@ -10,89 +10,27 @@ O objetivo dessa Sprint era a pratica do sql e a modelagem de um bando de dados 
 
 **Codigo fonte Modelo Relacional**
 
- '''sql
- CREATE table tb_cliente (
-      id_cliente int PRIMARY KEY,
-      nomeCliente varchar (20) 
-)
-CREATE TABLE tb_vendedor (
-       id_vendedor int PRIMARY KEY,
-       nomeVendedor varchar(25),
-       sexoVendedor smallint,
-       estadoVendedor varchar(20) 
-       )
+![cliente](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2022-01-41.png)
 
-CREATE table tb_carro (
-         id_carro int PRIMARY KEY,
-         km_carro int,
-         classi_carro varchar(30),
-         marca varchar(15),
-         modelo varchar(45),
-         ano_carro int
-)
-CREATE TABLE tb_combustivel (
-             id_combustivel int PRIMARY KEY, 
-             tipo_combustivel varchar(20),
-             id_carro int,
-             FOREIGN KEY (id_carro) REFERENCES tb_carro(id_carro) 
-           )
 
- CREATE TABLE tb_fato_locacao (
-             id_locacao int PRIMARY KEY,
-             data_locacao date,
-             hora_locacao time,
-             id_cliente int,
-             id_vendedor int,
-             id_carro int,
-             qtd_diaria int,
-             vlr_diaria decimal,
-             data_entrega date,
-             hora_entrega time,
-             FOREIGN KEY (id_cliente) REFERENCES tb_cliente (id_cliente),
-             FOREIGN KEY (id_vendedor) REFERENCES tb_vendedor (id_vendedor),
- )  
- '''  
+![vendedor](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2022-01-59.png)
+
+![carro_combustivel](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2022-02-18.png)
+
+![fatoinicial](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2022-02-35.png)
+
 
  **2. Modelo Dimensional**
  
  **Codigo Fonte Modelo Dimensional**
 
- '''sql
- CREATE TABLE endereco_cliente (
-           id_cliente int,
-           id_endereco int,
-           PRIMARY KEY (id_cliente, id_endereco),
-           FOREIGN KEY (id_cliente) references tb_cliente(id_cliente),
-           FOREIGN KEY (id_endereco) REFERENCES tb_endereco(id_endereco))
-CREATE TABLE endereco_locacao (
-           id_endereco int PRIMARY KEY,
-           cidade varchar,
-           estado varchar,
-           pais varchar 
-            )
- CREATE TABLE tb_locacao_tempo (
-     id_tempo int IDENTITY(1,1) PRIMARY KEY,
-     datacao date,
-     hora time,
-     dia int,
-     mes int,
-     ano int,
-     dia_da_semana int,
-     dia_da_semana_nome varchar(20), 
-)
-alter table tb_fato_locacao
-drop COLUMN data_locacao;
-drop COLUMN hora_locacao;
-drop COLUMN data_entrega;
-drop column hora_entrega
-alter table tb_fato_locacao
-add fk_tempo_locacao int;
-add fk_tempo_entrega int;
-ADD CONSTRAINT fk_tempo_locacao_tb_locacao_tempo FOREIGN KEY (fk_tempo_locacao) REFERENCES tb_locacao_tempo(id_tempo);
-ADD CONSTRAINT fk_tempo_entrega_tb_locacao_tempo FOREIGN KEY (fk_tempo_entrega) REFERENCES tb_locacao_tempo(id_tempo)
-CREATE INDEX idx_tb_locacao_tempo_data ON tb_locacao_tempo(datacao)
-'''
+![endereco_cliente](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2022-01-15.png)
 
+![endereco_locacao](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2022-02-54.png)
+
+ ![tempo](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2022-03-36.png)
+
+ 
 **Explicação dos processos** 
 
 **Normalização**
@@ -103,22 +41,9 @@ Dos dados disponilizidados no banco de dados "tb_locacao" foram extraidos as seg
 
  Os dados extraido do banco de dados tb_locacao foram editados para simplificar e criar uma ocorrencia por vez ,e a padronização deste para tabelas pragmaticas.
  
- ***Exemplo :**
+ **Exemplo :**
 
- ''' sql
- INSERT INTO tb_combustivel (id_combustivel, tipo_combustivel, id_carro)
-VALUES
-('1','Gasolina','98'),
-('2','Gasolina','99'),
-('3','Gasolina','3'),
-('4','Gasolina','10'),
-('5','Gasolina','7'),
-('6','Gasolina','6'),
-('7','Etanol','2'),
-('8','Etanol','4'),
-('9','Flex','1'),
-('10','Diesel','5') 
-'''
+![cliente](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2022-01-41.png)
 
 **Relação Dimensional**
 
@@ -126,33 +51,13 @@ Para a fazer o dimensionamento dos dados houve alteração na tabela tb_fato_loc
 
 **Exemplo:**
 
-'''sql
-alter table tb_fato_locacao
-drop COLUMN data_locacao;
-drop COLUMN hora_locacao;
-drop COLUMN data_entrega;
-drop column hora_entrega
-
-alter table tb_fato_locacao
-add fk_tempo_locacao int;
-add fk_tempo_entrega int;
-ADD CONSTRAINT fk_tempo_locacao_tb_locacao_tempo FOREIGN KEY (fk_tempo_locacao) REFERENCES tb_locacao_tempo(id_tempo);
-ADD CONSTRAINT fk_tempo_entrega_tb_locacao_tempo FOREIGN KEY (fk_tempo_entrega) REFERENCES tb_locacao_tempo(id_tempo)
-'''
+![novofato](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2022-03-36.png)
 
 Foi extraido tambem a dimensao por localização com a tabela endereco_locacao com propria primary key, com uma ocorrencia por endereço , ligada ao id_cliente ,para criar a rela;ao endere;o e cliente(relacao one-to-many) foi criada uma outra tabela endereco_cliente onde  tb_cliente onde fazia a ligacao com uma primary key composta com o id_endereco (id_cliente e id_endereco), podendo agora ter destrinchar os dados por , cidade, estado e pais onde ocorreu a locacao do veiculo, pelo endereço do cliente. 
 
 **Exemplo:**
 
-'''sql
-CREATE TABLE endereco_cliente (
-           id_cliente int,
-           id_endereco int,
-           PRIMARY KEY (id_cliente, id_endereco),
-           FOREIGN KEY (id_cliente) references tb_cliente(id_cliente),
-           FOREIGN KEY (id_endereco) REFERENCES tb_endereco(id_endereco)
-) 
-'''
+![endereco_cliente](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2022-03-08.png)
 
 
 
