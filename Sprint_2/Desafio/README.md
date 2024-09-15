@@ -11,12 +11,10 @@ O objetivo dessa Sprint era a pratica do sql e a modelagem de um bando de dados 
 **Codigo fonte Modelo Relacional**
 
  '''sql
- 
  CREATE table tb_cliente (
       id_cliente int PRIMARY KEY,
       nomeCliente varchar (20) 
 )
-
 CREATE TABLE tb_vendedor (
        id_vendedor int PRIMARY KEY,
        nomeVendedor varchar(25),
@@ -52,8 +50,8 @@ CREATE TABLE tb_combustivel (
              hora_entrega time,
              FOREIGN KEY (id_cliente) REFERENCES tb_cliente (id_cliente),
              FOREIGN KEY (id_vendedor) REFERENCES tb_vendedor (id_vendedor),
- )  '''  
-
+ )  
+ '''  
 
  **2. Modelo Dimensional**
  
@@ -66,14 +64,12 @@ CREATE TABLE tb_combustivel (
            PRIMARY KEY (id_cliente, id_endereco),
            FOREIGN KEY (id_cliente) references tb_cliente(id_cliente),
            FOREIGN KEY (id_endereco) REFERENCES tb_endereco(id_endereco))
-
 CREATE TABLE endereco_locacao (
            id_endereco int PRIMARY KEY,
            cidade varchar,
            estado varchar,
            pais varchar 
             )
-
  CREATE TABLE tb_locacao_tempo (
      id_tempo int IDENTITY(1,1) PRIMARY KEY,
      datacao date,
@@ -84,21 +80,17 @@ CREATE TABLE endereco_locacao (
      dia_da_semana int,
      dia_da_semana_nome varchar(20), 
 )
-
 alter table tb_fato_locacao
 drop COLUMN data_locacao;
 drop COLUMN hora_locacao;
 drop COLUMN data_entrega;
 drop column hora_entrega
-
 alter table tb_fato_locacao
 add fk_tempo_locacao int;
 add fk_tempo_entrega int;
 ADD CONSTRAINT fk_tempo_locacao_tb_locacao_tempo FOREIGN KEY (fk_tempo_locacao) REFERENCES tb_locacao_tempo(id_tempo);
 ADD CONSTRAINT fk_tempo_entrega_tb_locacao_tempo FOREIGN KEY (fk_tempo_entrega) REFERENCES tb_locacao_tempo(id_tempo)
-
 CREATE INDEX idx_tb_locacao_tempo_data ON tb_locacao_tempo(datacao)
-
 '''
 
 **Explicação dos processos** 
@@ -113,7 +105,7 @@ Dos dados disponilizidados no banco de dados "tb_locacao" foram extraidos as seg
  
  ***Exemplo :**
 
- ''' sql 
+ ''' sql
  INSERT INTO tb_combustivel (id_combustivel, tipo_combustivel, id_carro)
 VALUES
 ('1','Gasolina','98'),
@@ -152,8 +144,7 @@ Foi extraido tambem a dimensao por localização com a tabela endereco_locacao c
 
 **Exemplo:**
 
-'''sql 
-
+'''sql
 CREATE TABLE endereco_cliente (
            id_cliente int,
            id_endereco int,
