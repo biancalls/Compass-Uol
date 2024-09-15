@@ -20,6 +20,10 @@ O objetivo dessa Sprint era a pratica do sql e a modelagem de um bando de dados 
 ![fatoinicial](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2022-02-35.png)
 
 
+**ERD ANTES DA RELACAO DIMENSIONAL**
+
+![ERDNORM](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2023-09-42.png)
+
  **2. Modelo Dimensional**
  
  **Codigo Fonte Modelo Dimensional**
@@ -61,6 +65,7 @@ Foi extraido tambem a dimensao por localização com a tabela endereco_locacao c
 
 
 **ERD**
+
 Depois da normazilacao e dimensionamento do banco de dados, assim que ficou o ERD 
 
 ![ERD](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2023-04-41.png)
