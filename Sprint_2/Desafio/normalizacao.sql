@@ -47,9 +47,7 @@ CREATE table tb_carro (
          classi_carro varchar(30),
          marca varchar(15),
          modelo varchar(45),
-         ano_carro int,
-         id_combustivel int,
-         FOREIGN KEY (id_combustivel) REFERENCES tb_combustivel(id_combustivel)
+         ano_carro int
 )
 
 
@@ -181,6 +179,31 @@ VALUES
 
 ALTER TABLE tb_locacao_tempo 
 RENAME COLUMN DATA TO datacao
+   
+CREATE TABLE tb_locacao_tempo (
+     id_tempo int IDENTITY(1,1) PRIMARY KEY,
+     datacao date,
+     hora time,
+     dia int,
+     mes int,
+     ano int,
+     dia_da_semana int,
+     dia_da_semana_nome varchar(20), 
+)
+alter table tb_fato_locacao
+drop COLUMN data_locacao;
+drop COLUMN hora_locacao;
+drop COLUMN data_entrega;
+drop column hora_entrega
+
+alter table tb_fato_locacao
+add fk_tempo_locacao int;
+add fk_tempo_entrega int;
+ADD CONSTRAINT fk_tempo_locacao_tb_locacao_tempo FOREIGN KEY (fk_tempo_locacao) REFERENCES tb_locacao_tempo(id_tempo);
+ADD CONSTRAINT fk_tempo_entrega_tb_locacao_tempo FOREIGN KEY (fk_tempo_entrega) REFERENCES tb_locacao_tempo(id_tempo)
+
+
+
 
 
 insert into tb_locacao_tempo 
@@ -237,19 +260,12 @@ values
 ("2023-02-18","18:00",'18','2','2023','7', 'Sábado'),
 ("2023-02-19","18:00",'19','2','2023','1', 'Domingo')
 
-ALTER TABLE tb_locacao_tempo 
-DROP COLUMN trimestre
  
 
 CREATE INDEX idx_tb_locacao_tempo_data ON tb_locacao_tempo(datacao)
 
 
 
-
-ALTER TABLE tb_fato_locacao
-ADD fk_tempo_entrega int;
-ADD CONSTRAINT fk_tempo_entrega_tb_locacao_tempo FOREIGN KEY (fk_tempo_entrega) REFERENCES tb_locacao_tempo(id_tempo)
- 
 
 
 
