@@ -1,57 +1,167 @@
-# **Sprint 1 - Git e Linux**
+# **Sprint 2 - SQL e Modelagem de Dados Relacionais e Banco de Dados**
 
 ## **Sobre o Desafio:**
 
-O desafio pedia a geração de processos e relários de vendas de um ecommerce com base nos arquivos csv vindos deste ecommerce. 
+O objetivo dessa Sprint era a pratica do sql e a modelagem de um bando de dados de uma concessionaria, fazendo a normalização e o dimensionamento desse banco de dados.
 
 ## **Etapas**
 
-**1. Criação do arquivo.sh executável e diretórios** 
+**1. Modelo Relacional** 
 
-Foi pedido a criação de um arquivo executável de nome processamento_de_vendas.sh (cd /home/biancalages/Downloads/Sprint_1/Git_Linux/Desafio/ecommerce) , dentro dele deve conter um script contendo os comandos para criação de um diretório vendas (mkdir vendas) e uma copia do arquivo dados_de_vendas.csv (cp dados_de_vendas.csv vendas). Foi feito o comando para a criação da variável $hoje(hoje=$(date + %Y%m%d)) e a variável $periodo(periodo=$(date + %Y%m%d %H : %M)) onde identificava a data e as horas no relatórios.txt gerados nas execuções do arquivo.sh durante 4 dias consecutivos diferenciandos pela data do processamento . Dentro desse diretório vendas o arquivo csv foi renomeado dados-20240824.csv( cp dados_de_vendas.csv dados-$hoje.csv), uma copia renomeada do arquivo csv e a criação de outro diretório chamado backup ( cp dados-$hoje.csv backup/backup-dados-$hoje.csv).  
+**Codigo fonte Modelo Relacional**
+
+ '''sql
+ 
+ CREATE table tb_cliente (
+      id_cliente int PRIMARY KEY,
+      nomeCliente varchar (20) 
+)
+
+CREATE TABLE tb_vendedor (
+       id_vendedor int PRIMARY KEY,
+       nomeVendedor varchar(25),
+       sexoVendedor smallint,
+       estadoVendedor varchar(20) 
+       )
+
+CREATE table tb_carro (
+         id_carro int PRIMARY KEY,
+         km_carro int,
+         classi_carro varchar(30),
+         marca varchar(15),
+         modelo varchar(45),
+         ano_carro int
+)
+CREATE TABLE tb_combustivel (
+             id_combustivel int PRIMARY KEY, 
+             tipo_combustivel varchar(20),
+             id_carro int,
+             FOREIGN KEY (id_carro) REFERENCES tb_carro(id_carro) 
+           )
+
+ CREATE TABLE tb_fato_locacao (
+             id_locacao int PRIMARY KEY,
+             data_locacao date,
+             hora_locacao time,
+             id_cliente int,
+             id_vendedor int,
+             id_carro int,
+             qtd_diaria int,
+             vlr_diaria decimal,
+             data_entrega date,
+             hora_entrega time,
+             FOREIGN KEY (id_cliente) REFERENCES tb_cliente (id_cliente),
+             FOREIGN KEY (id_vendedor) REFERENCES tb_vendedor (id_vendedor),
+ )  '''  
 
 
+ **2. Modelo Dimensional**
+ 
+ **Codigo Fonte Modelo Dimensional**
 
- ![Screenshotinicial](https://github.com/biancalls/BiancaLages/blob/main/Sprint_1/Evidencias/Screenshot%20from%202024-08-30%2015-46-47.png)
+ '''sql
+ CREATE TABLE endereco_cliente (
+           id_cliente int,
+           id_endereco int,
+           PRIMARY KEY (id_cliente, id_endereco),
+           FOREIGN KEY (id_cliente) references tb_cliente(id_cliente),
+           FOREIGN KEY (id_endereco) REFERENCES tb_endereco(id_endereco))
 
+CREATE TABLE endereco_locacao (
+           id_endereco int PRIMARY KEY,
+           cidade varchar,
+           estado varchar,
+           pais varchar 
+            )
 
+ CREATE TABLE tb_locacao_tempo (
+     id_tempo int IDENTITY(1,1) PRIMARY KEY,
+     datacao date,
+     hora time,
+     dia int,
+     mes int,
+     ano int,
+     dia_da_semana int,
+     dia_da_semana_nome varchar(20), 
+)
 
+alter table tb_fato_locacao
+drop COLUMN data_locacao;
+drop COLUMN hora_locacao;
+drop COLUMN data_entrega;
+drop column hora_entrega
 
-**2. Captação do conteúdo do relatório.txt gerado** 
+alter table tb_fato_locacao
+add fk_tempo_locacao int;
+add fk_tempo_entrega int;
+ADD CONSTRAINT fk_tempo_locacao_tb_locacao_tempo FOREIGN KEY (fk_tempo_locacao) REFERENCES tb_locacao_tempo(id_tempo);
+ADD CONSTRAINT fk_tempo_entrega_tb_locacao_tempo FOREIGN KEY (fk_tempo_entrega) REFERENCES tb_locacao_tempo(id_tempo)
 
-O processamento desse arquivo.sh, usando os dados da copia backup-dados-$hoje.csv, gera um relatorios-$hoje.txt (touch relatorios-$hoje.txt), neste deve conter ,na primeira linha, a data e a hora do processamento do arquivo ( echo "Periodo: $periodo" >> relatorios-$hoje.txt) , em seguida a captanção da data do primeiro registro de venda no arquivo.csv ( primeira_vendas=$(head -n 2 backup-dados-$hoje.csv | cut -d ',' -f 5) e envia a informação ao arquivo relatorios-$hoje.txt ( echo "Primeria venda: $primeira_venda" >> relatorios-$hoje.txt). Logo depois a captação do ultimo registro de venda contido no arquivo ( ultima_venda=$(tail -n 1 backup-dados-$hoje.csv | cut -d ',' -f 5) que é enviado para o arquivo relatorios-$hoje.txt ( echo "Ultima venda: $ultima_venda" >> relatorios-$hoje.txt). A quantidade total de itens diferentes foi pedida ( itens_vendidos=$(tail -n +2 backup-dados-$hoje.csv | cut -d ',' -f 2 | sort |uniq | wc -l) e também enviada para o arquivo relatorios-$hoje.txt ( echo "Itens Vendidos: $itens_vendidos >> relatorios-$hoje.txt) . Foi requisitado que o arquivo relatorios-$hoje.txt tenha as 10 primeiras linhas do arquivo backup-dados-$hoje.csv (dez_primeiras=$(head backup-dados-$hoje.csv)) e enviado para finalizar o relatorios-$hoje.txt ( echo "Dez primeiras linhas: $dez_primeiras" >> relatorios-$hoje.txt).
+CREATE INDEX idx_tb_locacao_tempo_data ON tb_locacao_tempo(datacao)
 
+'''
 
-![linhas](https://github.com/biancalls/BiancaLages/blob/main/Sprint_1/Evidencias/Screenshot%20from%202024-08-30%2015-47-11.png) 
+**Explicação dos processos** 
 
+**Normalização**
 
+Seguindo as regras de normalização para minimizar redundancias para garantir a integridade e eficencias do banco de dados. Foi abordado as formas 1NF, 2NF, 3NF para a normalização.
+Dos dados disponilizidados no banco de dados "tb_locacao" foram extraidos as seguintes tabelas  "tb_cliente" , "tb_vendedor", "tb_carro", "tb_combustivel" e "tb_fato_locacao" , cada uma dessas contenho id integer proprio como primary key , criando chaves que ligam umas com as outras, dependendo do relacionamento como : one-to-one entre o id_carro com o id_fato_locacao, one-to-one entre id_vendedor com id_locacao, one-to-one id_cliente com id_locacao . Concluise que por id de locacao temos : um cliente, um vendedor, e um carro .
+ Tambem temos a relação de many-to-one entre combustivel e carro, ou seja, um carro aceita varias combustiveis. 
 
-**3. Redução do espaço em disco**
+ Os dados extraido do banco de dados tb_locacao foram editados para simplificar e criar uma ocorrencia por vez ,e a padronização deste para tabelas pragmaticas.
+ 
+ ***Exemplo :**
 
-A compactação dos arquivo backup-dados-$hoje.csv devido ao tamanho do diretório ecommerce ( zip -r backup-dados-$hoje.zip backup-dados-$hoje.csv).Foi removido o arquivo backup-dados-$hoje.txt e dados_de_vendas.csv do diretório vendas ( rm backup-dados-$hoje.csv cd../  rm dados_de_vendas.csv)
+ ''' sql 
+ INSERT INTO tb_combustivel (id_combustivel, tipo_combustivel, id_carro)
+VALUES
+('1','Gasolina','98'),
+('2','Gasolina','99'),
+('3','Gasolina','3'),
+('4','Gasolina','10'),
+('5','Gasolina','7'),
+('6','Gasolina','6'),
+('7','Etanol','2'),
+('8','Etanol','4'),
+('9','Flex','1'),
+('10','Diesel','5') 
+'''
 
+**Relação Dimensional**
 
-![linhasfinais](https://github.com/biancalls/BiancaLages/blob/main/Sprint_1/Evidencias/Screenshot%20from%202024-08-30%2015-47-40.png)
+Para a fazer o dimensionamento dos dados houve alteração na tabela tb_fato_locacao, com a retirada das columas data_locacao, hora_locacao, data_entrega e hora_entrega ,estes dados sendo remanezados e normalizados em uma nova tabela chamada de tb_locacao_tempo, fazendo assim duas foreign key de tempo de locacao e entrega, criando a dimensao tempo do fato gerador , dividindo-a em dia, mes, ano , dia da semana, assim , facilitando as buscas mais especificas.
 
+**Exemplo:**
 
-**4. Comando crontab**
+'''sql
+alter table tb_fato_locacao
+drop COLUMN data_locacao;
+drop COLUMN hora_locacao;
+drop COLUMN data_entrega;
+drop column hora_entrega
 
-Foi feito um agendamento de executação do script contido no arquivo.sh processamento_de_vendas.sh, durante quatro dias consecutivos, de quarta-feira a sábado as 15:27 
+alter table tb_fato_locacao
+add fk_tempo_locacao int;
+add fk_tempo_entrega int;
+ADD CONSTRAINT fk_tempo_locacao_tb_locacao_tempo FOREIGN KEY (fk_tempo_locacao) REFERENCES tb_locacao_tempo(id_tempo);
+ADD CONSTRAINT fk_tempo_entrega_tb_locacao_tempo FOREIGN KEY (fk_tempo_entrega) REFERENCES tb_locacao_tempo(id_tempo)
+'''
 
-![crontab](https://github.com/biancalls/BiancaLages/blob/main/Sprint_1/Evidencias/Screenshot%20from%202024-08-28%2010-43-35.png)) 
+Foi extraido tambem a dimensao por localização com a tabela endereco_locacao com propria primary key, com uma ocorrencia por endereço , ligada ao id_cliente ,para criar a rela;ao endere;o e cliente(relacao one-to-many) foi criada uma outra tabela endereco_cliente onde  tb_cliente onde fazia a ligacao com uma primary key composta com o id_endereco (id_cliente e id_endereco), podendo agora ter destrinchar os dados por , cidade, estado e pais onde ocorreu a locacao do veiculo, pelo endereço do cliente. 
 
-**5. Criando um novo relátorio**
+**Exemplo:**
 
-Ao final dos processamentos diarios, foi pedido um  script em um novo arquivo.sh executável consolidador_de_processamento_de_vendas.sh que consolidasse todos os arquivos.txt gerados em unico outro arquivo relatorio_final.txt 
+'''sql 
 
-
-![Consolidador](https://github.com/biancalls/BiancaLages/blob/main/Sprint_1/Evidencias/Screenshot%20from%202024-08-31%2016-22-15.png)
-
-
-## **Dificuldades**
-
-Durante a execução desse desafio enfretei algumas dificuldades tecnicas, devido a falta de experiência na área e com os programas em questão (Git e Linux). Erros de grafia de comamdos, fiz comandos errados que me resultou na perda de arquivos e diretórios, tive problemas configuração inicial do git hub e do linux , que me tiram dias de rendimento porém adquiri conhecimentos durante a resolução desse problemas, além do material didatico disponibilizado para mim, a minha turma do estágio e meu SQUAD ajudaram significativamente, assim como os foruns dessas plataformas, pequisas onlines e videos no youtube me ajudaram a compreender o linguajar e tecnico dessas plataformas para a conclusão desse desafio. 
-
+CREATE TABLE endereco_cliente (
+           id_cliente int,
+           id_endereco int,
+           PRIMARY KEY (id_cliente, id_endereco),
+           FOREIGN KEY (id_cliente) references tb_cliente(id_cliente),
+           FOREIGN KEY (id_endereco) REFERENCES tb_endereco(id_endereco)
+) 
+'''
 
 
 
