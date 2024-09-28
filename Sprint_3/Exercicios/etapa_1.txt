@@ -1,0 +1,6 @@
+Actor: Robert DeNiro
+Total Gross: 3081.30 
+Number of Movies: 79
+Average per Movie: 39.00 
+#1 Movie: Meet the Fockers
+Gross: 279.30 
