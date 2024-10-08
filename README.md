@@ -14,7 +14,7 @@
 
 **🌐︎ Experiências:** Cursando estagio em CompassUol
 
-**💡 Conhecimentos:** Python, Linux e Git 
+**💡 Conhecimentos:** Python, Linux, Git, SQL, Docker 
 
 **😃 Hobbies:** Cozinha, Filmes e Leitura
 
@@ -24,7 +24,7 @@
 
 **🇺🇸 Ingles:** Avançado
 
-**🇪🇸 Espanhol:** Basico
+**🇪🇸 Espanhol:** Básico
 
 [**Contribuidor principal**](https://github.com/biancalls)
 
