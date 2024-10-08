@@ -1,0 +1,7 @@
+FROM python:3.9-slim
+
+WORKDIR /etapa_1
+
+COPY carguru.py /etapa_1/
+
+CMD ["python","carguru.py"]
