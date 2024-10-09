@@ -1,73 +1,95 @@
-# **Sprint 2 - SQL e Modelagem de Dados Relacionais e Banco de Dados**
+# **Sprint 4 - Docker, Kurbertentes e Linguagem Python**
 
 ## **Sobre o Desafio:**
 
-O objetivo dessa Sprint era a pratica do sql e a modelagem de um bando de dados de uma concessionaria, fazendo a normalização e o dimensionamento desse banco de dados.
+O objetivo do desafio dessa sprint era a prática combinada de Docker com a criação de imagens e containers com scripts Python. Usei o programa Pycharm para realizar o desafio.
 
 ## **Etapas**
 
-**1. Modelo Relacional** 
+### **1. Criação de Imagem e Execução de Container** 
 
-**Codigo fonte Modelo Relacional**
+**Dockerfile e Diretório execução imagens carguru**
 
-![cliente](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2022-01-41.png)
+Foi usado Python 3.9-slim para criar uma imagem que não comprometesse demasiadamento a memória do arquivo.
 
+![diretorio_carguru](https://github.com/biancalls/BiancaLages/blob/main/Sprint_4/Evidencias/Desafio/criacao_diretorio_carguru.png)
 
-![vendedor](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2022-01-59.png)
-
-![carro_combustivel](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2022-02-18.png)
-
-![fatoinicial](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2022-02-35.png)
+**Processamento Imagem Carguru**
 
 
-**ERD ANTES DA RELACAO DIMENSIONAL**
+![imagem_carguru](https://github.com/biancalls/BiancaLages/blob/main/Sprint_4/Evidencias/Desafio/criacao_imagem_carguru.png)
 
-![ERDNORM](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2023-09-42.png)
+**Processamento Containers Carguru**
 
- **2. Modelo Dimensional**
- 
- **Codigo Fonte Modelo Dimensional**
+![process_container_carguru](https://github.com/biancalls/BiancaLages/blob/main/Sprint_4/Evidencias/Desafio/container_carguru.png)
 
-![endereco_cliente](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2022-01-15.png)
+**Resultado Imagem Carguru**
 
-![endereco_locacao](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2022-02-54.png)
+![resultado_carguru](https://github.com/biancalls/BiancaLages/blob/main/Sprint_4/Evidencias/Desafio/resultado_imagem_carguru.png)
 
- ![tempo](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2022-03-36.png)
+**Docker Descktop Imagem**
 
- 
-**Explicação dos processos** 
+![docker_imagem_carguru](https://github.com/biancalls/BiancaLages/blob/main/Sprint_4/Evidencias/Desafio/docker_carguru_imagem.png)
 
-**Normalização**
+**Docker Descktop Container**
 
-Seguindo as regras de normalização para minimizar redundancias para garantir a integridade e eficencias do banco de dados. Foi abordado as formas 1NF, 2NF, 3NF para a normalização.
-Dos dados disponilizidados no banco de dados "tb_locacao" foram extraidos as seguintes tabelas  "tb_cliente" , "tb_vendedor", "tb_carro", "tb_combustivel" e "tb_fato_locacao" , cada uma dessas contenho id integer proprio como primary key , criando chaves que ligam umas com as outras, dependendo do relacionamento como : one-to-one entre o id_carro com o id_fato_locacao, one-to-one entre id_vendedor com id_locacao, one-to-one id_cliente com id_locacao . Concluise que por id de locacao temos : um cliente, um vendedor, e um carro .
- Tambem temos a relação de many-to-one entre combustivel e carro, ou seja, um carro aceita varias combustiveis. 
+![docker_container_carguru](https://github.com/biancalls/BiancaLages/blob/main/Sprint_4/Evidencias/Desafio/docker_container_carguru.png)
 
- Os dados extraido do banco de dados tb_locacao foram editados para simplificar e criar uma ocorrencia por vez ,e a padronização deste para tabelas pragmaticas.
- 
- **Exemplo :**
+### **2. Restart Container**
 
-![cliente](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2022-01-41.png)
+Foi pedido para reiniciar um container existente, a seguir temos o comando restart do container carguru 
 
-**Relação Dimensional**
+![restart_container](https://github.com/biancalls/BiancaLages/blob/main/Sprint_4/Evidencias/Desafio/restart_container.png)
 
-Para a fazer o dimensionamento dos dados houve alteração na tabela tb_fato_locacao, com a retirada das columas data_locacao, hora_locacao, data_entrega e hora_entrega ,estes dados sendo remanezados e normalizados em uma nova tabela chamada de tb_locacao_tempo, fazendo assim duas foreign key de tempo de locacao e entrega, criando a dimensao tempo do fato gerador , dividindo-a em dia, mes, ano , dia da semana, assim , facilitando as buscas mais especificas.
+### **3. Criação de novo Script Python , Imagem e Container Docker**
 
-**Exemplo:**
+Foi pedido a criação de um script pyhton mascara_dados, esse codigo recebia um input, gerava o hash usando algoritmo SHA-1, imprimindo-o usando método hexdigest e retornando para ao começo , fazendo um loop while true.
 
-![novofato](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2022-03-36.png)
+```python
+import hashlib
 
-Foi extraido tambem a dimensao por localização com a tabela endereco_locacao com propria primary key, com uma ocorrencia por endereço , ligada ao id_cliente ,para criar a rela;ao endere;o e cliente(relacao one-to-many) foi criada uma outra tabela endereco_cliente onde  tb_cliente onde fazia a ligacao com uma primary key composta com o id_endereco (id_cliente e id_endereco), podendo agora ter destrinchar os dados por , cidade, estado e pais onde ocorreu a locacao do veiculo, pelo endereço do cliente. 
+def main():
+    while True:
+        string = input('Digite algo: ')
+        sha1 = hashlib.sha1(string.encode('utf-8')).hexdigest()
+        print(f'SHA-1: {sha1}')
 
-**Exemplo:**
+if __name__ == '__main__':
+    main()
 
-![endereco_cliente](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2022-03-08.png)
+```
+![cod_mascara](https://github.com/biancalls/BiancaLages/blob/main/Sprint_4/Evidencias/Desafio/mascara_dados_cod.png)
+
+**Dockerfile e Dirétorio de execução**
+
+![diretorio_mascara](https://github.com/biancalls/BiancaLages/blob/main/Sprint_4/Evidencias/Desafio/mascara_criacao_diretorio.png)
+
+**Build Imagem Mascara Dados**
+
+![process_imagem_mascara](https://github.com/biancalls/BiancaLages/blob/main/Sprint_4/Evidencias/Desafio/process_imagem_mascara.png)
+
+**Criação Container Mascara Dados**
+
+![container_mascara](https://github.com/biancalls/BiancaLages/blob/main/Sprint_4/Evidencias/Desafio/process_containers_mascara.png)
+
+**Renomeação e Resultado Imagem**
+
+![rename](https://github.com/biancalls/BiancaLages/blob/main/Sprint_4/Evidencias/Desafio/process_cod_mascara.png)
+
+**Docker Descktop Imagem**
+
+![docker_imagens](https://github.com/biancalls/BiancaLages/blob/main/Sprint_4/Evidencias/Desafio/docker_imagem_mascara.png)
+
+**Docker Descktop Container**
+
+![docker_containers](https://github.com/biancalls/BiancaLages/blob/main/Sprint_4/Evidencias/Desafio/docker_containers.png)
 
 
-**ERD**
+## **Dificuldades**
 
-Depois da normazilacao e dimensionamento do banco de dados, assim que ficou o ERD 
+As dificuldade que tive nesse desafio foi a criação do script python, tive que fazer uma pesquisa sobre hexdigest e algoritmo SHA-1, para poder concluir o script pedido na etapa 3.
 
-![ERD](https://github.com/biancalls/BiancaLages/blob/main/Sprint_2/Evidencias/Screenshot%20from%202024-09-14%2023-04-41.png)
+
+
 
 
