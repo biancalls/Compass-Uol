@@ -43,7 +43,7 @@ Foi pedido para reiniciar um container existente, a seguir temos o comando resta
 
 ### **3. Criação de novo Script Python , Imagem e Container Docker**
 
-Foi pedido a criação de um script pyhton mascara_dados, esse codigo recebia um input, gerava o hash usando algoritmo SHA-1, imprimindo-o usando método hexdigest e retornando para ao começo , fazendo um loop while true.
+Foi pedido a criação de um script pyhton chamado mascara_dados, esse codigo recebia um input, gerava o hash usando algoritmo SHA-1, imprimindo-o usando método hexdigest , encriptando a string e a mostrando no terminal ,seguentimente retornando ao comando input pedindo outra string, até o comando "ctrl+C" ser inserido pelo usuário, encerrando o loop.
 
 ```python
 import hashlib
@@ -87,7 +87,7 @@ if __name__ == '__main__':
 
 ## **Dificuldades**
 
-As dificuldade que tive nesse desafio foi a criação do script python, tive que fazer uma pesquisa sobre hexdigest e algoritmo SHA-1, para poder concluir o script pedido na etapa 3.
+As dificuldade que tive nesse desafio foi a criação do script python, tive que fazer uma pesquisa sobre hexdigest e algoritmo SHA-1, para poder concluir o script pedido na etapa 3, sobre encriptação e a importância desta no armazenamanto de dados sensíveis. 
 
 
 
