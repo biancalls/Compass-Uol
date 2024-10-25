@@ -1,0 +1,32 @@
+import boto3
+import os
+
+# Definindo as variáveis de ambiente
+AWS_ACCESS_KEY_ID = os.environ.get('ASIAXZEFHX2RLVSTOHGF')
+AWS_SECRET_ACCESS_KEY = os.environ.get('xjhwKrZvGkIrthsc69KyUg+kpsQcWsPMGfWBiayX')
+AWS_SESSION_TOKEN = os.environ.get('IQoJb3JpZ2luX2VjEEAaCXVzLWVhc3QtMSJHMEUCIE/Xr0YE6Pjb1fp0iz0q0zFfITiGzv6HyYsW95GucsAvAiEAkvkrNZWJmw4Mp979AiLE/b3z7MIlOaeKCHx/tVWygUIqpgMIqP//////////ARAAGgw1MzUwMDI4NTcxMjIiDISVvSKGw5wzVljKTir6AuTDusVUxrKBHn6eVixYhPaHV4cts3gXGjtBslhJBBTDQ75/wa6GzKJF1z6to836WjT91Lf1A+3q72USxNJAZvYb3gSRXnnEdx5ee5iBFWEee84shaKxih8DGkpTwzNnQtD8YjV4uiETyxHeW1QL26zN3HhzjNKGVy4JNQULG1XzztU2tHXv7UkBawsJ8zYuu0LEn2HExlAWJ3yE7hUxJDnZb8iC8+BmbXgZ3sZ7mBgef/Kg1DPD4tD83NjF0nEAKLJgnbUBOwfvThMO82jxmUclU+XwFxrj1rxgo/wpK4WdT/gs/utKTWY4TKR2CQZ37vrY296q3HBy2VjGg1lP9oA5c6mAZG7nSWVV5VNaBzrGocFi0TtsO9Wroz6/L0QTmFnWMEL7uBzfoXXZcg1lpm14rSRM5Io7oy/oOZtUrme3Iwfe+90No1EAonzel8fNzMNe9LFdNfusd6PRFgTWhk31RIYDLoAW+w9CtOwEZCX0jlqioMAGWzKL7jCDht+4BjqmAQOwTQIW55FVyYuNA8L8YecWa8ZThVjeEfHw9tXto+5lT3DegKKkUzrfCfUck6K3yDb7ugKMWE+xPR4zv9tclbPE8+1tR45AHG5wTU7kVjyUIes2QfWluHA8Oo5ytnpTLoLxmFAkpOXWUufflI1UN6NkrhcfzTz9ylUxFOeV2QgIIPdznYHgAQoHyl1QLW+W/5sTdnnScql9bl3XQ3k4dKRf25ouWNc=')
+
+# Criando a sessão do boto3
+session = boto3.Session(
+    aws_access_key_id='ASIAXZEFHX2RLVSTOHGF',
+    aws_secret_access_key='xjhwKrZvGkIrthsc69KyUg+kpsQcWsPMGfWBiayX',
+    aws_session_token='IQoJb3JpZ2luX2VjEEAaCXVzLWVhc3QtMSJHMEUCIE/Xr0YE6Pjb1fp0iz0q0zFfITiGzv6HyYsW95GucsAvAiEAkvkrNZWJmw4Mp979AiLE/b3z7MIlOaeKCHx/tVWygUIqpgMIqP//////////ARAAGgw1MzUwMDI4NTcxMjIiDISVvSKGw5wzVljKTir6AuTDusVUxrKBHn6eVixYhPaHV4cts3gXGjtBslhJBBTDQ75/wa6GzKJF1z6to836WjT91Lf1A+3q72USxNJAZvYb3gSRXnnEdx5ee5iBFWEee84shaKxih8DGkpTwzNnQtD8YjV4uiETyxHeW1QL26zN3HhzjNKGVy4JNQULG1XzztU2tHXv7UkBawsJ8zYuu0LEn2HExlAWJ3yE7hUxJDnZb8iC8+BmbXgZ3sZ7mBgef/Kg1DPD4tD83NjF0nEAKLJgnbUBOwfvThMO82jxmUclU+XwFxrj1rxgo/wpK4WdT/gs/utKTWY4TKR2CQZ37vrY296q3HBy2VjGg1lP9oA5c6mAZG7nSWVV5VNaBzrGocFi0TtsO9Wroz6/L0QTmFnWMEL7uBzfoXXZcg1lpm14rSRM5Io7oy/oOZtUrme3Iwfe+90No1EAonzel8fNzMNe9LFdNfusd6PRFgTWhk31RIYDLoAW+w9CtOwEZCX0jlqioMAGWzKL7jCDht+4BjqmAQOwTQIW55FVyYuNA8L8YecWa8ZThVjeEfHw9tXto+5lT3DegKKkUzrfCfUck6K3yDb7ugKMWE+xPR4zv9tclbPE8+1tR45AHG5wTU7kVjyUIes2QfWluHA8Oo5ytnpTLoLxmFAkpOXWUufflI1UN6NkrhcfzTz9ylUxFOeV2QgIIPdznYHgAQoHyl1QLW+W/5sTdnnScql9bl3XQ3k4dKRf25ouWNc='
+
+)
+
+s3 = session.resource('s3')
+
+bucket = 'biancalages05'
+
+s3.create_bucket(Bucket=bucket)
+
+arquivo= 'C:\\Users\\bianc\\PycharmProjects\\pythonProject\\aws_desafio\\arrecadacao-estado.csv'
+
+nome_arquivo = 'arrecadacao-estado.csv'
+
+s3.Bucket(bucket).upload_file(arquivo, nome_arquivo)
+
+
+print(f'Arquivo {nome_arquivo} enviado para o bicket {bucket} com sucesso!')
+
+
