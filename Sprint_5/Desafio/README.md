@@ -10,6 +10,39 @@ O objetivo do desafio dessa sprint era a prática dos conhecimentos de AWS. Usei
 
 Escolhi os dados de arrecadação de impostos por estado referente aos anos 2000 ate agosto de 2024. Nesse arquivo csv denominado arrecadacao-estado.csv , possui as arrecadação por impostos por estado 'UF' por mês, como impostos sobre importação , ipi sobre automoveis entre outros. Sou formada em Ciências Contábeis e escolhi um csv que com esses conhecimentos da graduação eu conseguiria interpretar com mas facilidade os dados.
 
+## **BIBLIOTÉCAS E IMPORTAÇÕES**
+
+```python
+import pandas as pd
+import numpy as np
+import boto3
+from io import StringIO
+import os
+```
+
+## **CONECÇÃO COM A CONTA AWS**
+
+```python
+# Definindo as variáveis de ambiente
+AWS_ACCESS_KEY_ID = os.environ.get("aws_access_key_id")
+AWS_SECRET_ACCESS_KEY = os.environ.get("aws_secret_access_key")
+AWS_SESSION_TOKEN = os.environ.get("aws_session_token")
+
+# Criando a sessão do boto3
+session = boto3.Session(
+    aws_access_key_id="AWS_ACCESS_KEY_ID",
+    aws_secret_access_key="AWS_SECRET_ACCESS_KEY",
+    aws_session_token="AWS_SESSION_TOKEN"
+
+s3 = session.resource('s3')
+
+# Carregar o arquivo CSV do bucket S3
+s3_client = session.client('s3')
+bucket_name = 'biancalages05'
+arquivo= 'arrecadacao-estado.csv'
+```
+
+Aqui temos os comando usado as acess key tava conectar o script com o sistema AWS S3.
 
 ### **CRIAÇÃO BUCKET USANDO SCRIPT PYTHON E BIBLIOTECA BOTO3**
 
@@ -34,7 +67,6 @@ s3.Bucket(bucket).upload_file(arquivo, nome_arquivo)
 
 
 print(f'Arquivo {nome_arquivo} enviado para o bicket {bucket} com sucesso!')
-
 ```
 
 **UPLOAD ARQUIVO CSV ARRECADAÇÃO-ESTADO.CSV PARA O BUCKET BIANCALAGES05**
@@ -136,6 +168,22 @@ df = converter_mes_para_maiusculas(df)
 Aqui temos uma função que converte os dados na coluna MÊS em upper e depois aplicada a função no dataframe criado.
 
 ![DF_FINAL](../../Sprint_5/Evidências/Desafio/DF_FINAL.png)
+
+## **UPLOAD DOS CSV PARA O BUCKET AWS USANDO BOTO3**
+
+```python
+# Upload df_filtrados
+csv_buffer = StringIO()
+df_filtrados.to_csv(csv_buffer, sep=';', index=False)
+output_file_key01 = '../Arquivos_csv/df_filtrados.csv'
+s3_client.put_object(Bucket=bucket_name, Key=output_file_key01, Body=csv_buffer.getvalue())
+
+df.to_csv('df_filtrados.csv', sep=';', index=False)
+
+print(f'Arquivo {output_file_key01} enviado para o bicket {bucket_name} com sucesso!')
+```
+
+Para cada função foi criado um arquivo csv , esse comando fazia a criação do arquivo csv e o mandava para o bucket criado para o desafio.
 
 ## **UPLOAD PARA O BUCKET S3 USANDO BOTO3**
 
