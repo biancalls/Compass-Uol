@@ -5,15 +5,14 @@ from io import StringIO
 import os
 
 # Definindo as variáveis de ambiente
-AWS_ACCESS_KEY_ID = os.environ.get("ASIAXZEFHX2RGGMSDLKC")
-AWS_SECRET_ACCESS_KEY = os.environ.get("bpGmuQqDqibM2i57Sw30+YOVOrT6/aEokGq5mR8N")
-AWS_SESSION_TOKEN = os.environ.get("IQoJb3JpZ2luX2VjEFYaCXVzLWVhc3QtMSJHMEUCIF7lNPCHGRSxcKf9NKW1UHBbfbzcG7NUMMCTKBfYMEc+AiEA9ELaWtIAyu0Ez9m4nDAN0DbbWrQ+QjOd3xXz8bbOvMwqpgMIv///////////ARAAGgw1MzUwMDI4NTcxMjIiDAys5aBL/0m+8euGiSr6AokRa0dRh3J/HHzKsVDYn+H583/g+YHDVB50tj31SoL1/Uui++4HBKaeMkSbzbuL6R1YySaj8b5lnW58aj5sCsQ7gQGn9TTQXm3X6jtDsDsHqIcFYDP7zTtEw84xFOQqsC2DcYLvOhmPm0+vrVv+TyKUMrj4wg9PYJf/myMH9j5ppI4ZLlSgEYHCUo1FASN6hD/A8XELzgV2evFq+GBZzkezypVdul+8jr/E04hLNTt+NYcmkiwhzl9ao14N+4dP+8y4qn4rM1W6hz3CjNTBz6OMhVPGef8qzAv3We+d/6RINdsQVdJiHqsrCTf7F+7IjGGPbykcN5qhGgFwX5CNf/wIEpryQYC9BAPHkwUNdA3GykcwyhhkFRxw3gVpo8VC9PCIeCsdDk9qysf0X+/gUO9Q4VoBtrG2Ss+noV+nT1iJvprDVPVSjDr8CAGqtm44SFUIr36ZgWgsmXr+zz/+R0Ex+3x/iIvxbU6Da8zzuahi8zvzXwNdLR/67jCHg+S4BjqmAc/RbZOe2ofaaMT116VSBzONEeYLRYrVLXRm4jIN/P8NkP+USnSmh/WOuw+uD+P00xjllUO44rACKQbkptFmx+X27D6+MYHRYvNX+jJP8IjBZ4HHX1XwwjgkyQyx1Iw0tr8kvkKZ4Elkt8WanlK8jjhbaslb/AqWnDGDHab4Xr8vip9a8aUDCP4P2SCirKuR3ZPBaC7Z12pwaJD2QiiHZG/YNQl4Rrk=")
-
+AWS_ACCESS_KEY_ID = os.environ.get('ASIAXZEFHX2RHO5RUO5Y')
+AWS_SECRET_ACCESS_KEY = os.environ.get('RoI5EuNOXEqRboSC7AF/8TilUsNM/pWQ76IK++aZ')
+AWS_SESSION_TOKEN = os.environ.get('IQoJb3JpZ2luX2VjEJ3//////////wEaCXVzLWVhc3QtMSJHMEUCIQC7liuctv7g5A5FLrwr9cWLG1W2AKYagAE1rnV/bWCMGwIgKFgaOD7PA0LKMzpOnLK2jxeWdk7+Ooqy/mGL9KYVyjIqnQMIFhAAGgw1MzUwMDI4NTcxMjIiDKwIUb/A4SuADkKGvyr6AmKKojMqcfQPNjAB/JvmoTE8Sm01jnyYk1Pxm9RIFk9PWCZ4asJJ+fHvye42xJkWSgbtO1Kmp01ceA34vQ9Qo1Xl5coVNUR0ZJFoe/mADuIYpY3YQPbB6Zk+sizSt0auWU2vE8xRlyKFn92fMMVokwW1bDXzwKtaF7rNkKljBOXM0JNFrJW9H/KK7dbixiRdIbka0115J1krFIRG55SmBMwt+xaHtWki6+w6euw2VixqaV1S0xYajyNuYyzFsEe2+C6qubY86T7XFHw9JueL78yG/0tbG1cZZGKyWp31ehkuWGyktgI6hfa79dGm+rjXc6/jVif+LYU5xrrOP7aGc6of5tEI1bboYlNv4kRSaKk+x0CAoF0vw23HdF3K9Yy+F0AOYsy6fAOScUnXuX7JXIbO3p1jQhvhOpA8bKXFscxgVFShhL9pUK3wR9lOHkMYlgl/U3c12QtrTLvRbHvGN1wxyA47ewjeoxIb/J0oXdX0hfbbN7kX8d6dnjDqz/O4BjqmAdugE7Sr3Zkjs8kpRGWEtmyNX1c/v6sMO3s/PnR7EyurtWRMtRSZ5cr+VSXydFkiLBLW9FjvJ7E/wATM6mpMbuT0ldBPOLMfUbD2jW56xJngqlDiP5VpvC+DzSejW3bgTvTPWz4zQx3dwEaT2bhxpEbfOEOXcciFKc/h9DuJ4OKnDT9L6QqziuMHTt8DtcHzmR9hv3MPIaYX/NeXW2Wumtoplku6H0g=')
 # Criando a sessão do boto3
 session = boto3.Session(
-    aws_access_key_id="ASIAXZEFHX2RGGMSDLKC",
-    aws_secret_access_key="bpGmuQqDqibM2i57Sw30+YOVOrT6/aEokGq5mR8N",
-    aws_session_token="IQoJb3JpZ2luX2VjEFYaCXVzLWVhc3QtMSJHMEUCIF7lNPCHGRSxcKf9NKW1UHBbfbzcG7NUMMCTKBfYMEc+AiEA9ELaWtIAyu0Ez9m4nDAN0DbbWrQ+QjOd3xXz8bbOvMwqpgMIv///////////ARAAGgw1MzUwMDI4NTcxMjIiDAys5aBL/0m+8euGiSr6AokRa0dRh3J/HHzKsVDYn+H583/g+YHDVB50tj31SoL1/Uui++4HBKaeMkSbzbuL6R1YySaj8b5lnW58aj5sCsQ7gQGn9TTQXm3X6jtDsDsHqIcFYDP7zTtEw84xFOQqsC2DcYLvOhmPm0+vrVv+TyKUMrj4wg9PYJf/myMH9j5ppI4ZLlSgEYHCUo1FASN6hD/A8XELzgV2evFq+GBZzkezypVdul+8jr/E04hLNTt+NYcmkiwhzl9ao14N+4dP+8y4qn4rM1W6hz3CjNTBz6OMhVPGef8qzAv3We+d/6RINdsQVdJiHqsrCTf7F+7IjGGPbykcN5qhGgFwX5CNf/wIEpryQYC9BAPHkwUNdA3GykcwyhhkFRxw3gVpo8VC9PCIeCsdDk9qysf0X+/gUO9Q4VoBtrG2Ss+noV+nT1iJvprDVPVSjDr8CAGqtm44SFUIr36ZgWgsmXr+zz/+R0Ex+3x/iIvxbU6Da8zzuahi8zvzXwNdLR/67jCHg+S4BjqmAc/RbZOe2ofaaMT116VSBzONEeYLRYrVLXRm4jIN/P8NkP+USnSmh/WOuw+uD+P00xjllUO44rACKQbkptFmx+X27D6+MYHRYvNX+jJP8IjBZ4HHX1XwwjgkyQyx1Iw0tr8kvkKZ4Elkt8WanlK8jjhbaslb/AqWnDGDHab4Xr8vip9a8aUDCP4P2SCirKuR3ZPBaC7Z12pwaJD2QiiHZG/YNQl4Rrk="
+    aws_access_key_id='ASIAXZEFHX2RHO5RUO5Y',
+    aws_secret_access_key='RoI5EuNOXEqRboSC7AF/8TilUsNM/pWQ76IK++aZ',
+    aws_session_token='IQoJb3JpZ2luX2VjEJ3//////////wEaCXVzLWVhc3QtMSJHMEUCIQC7liuctv7g5A5FLrwr9cWLG1W2AKYagAE1rnV/bWCMGwIgKFgaOD7PA0LKMzpOnLK2jxeWdk7+Ooqy/mGL9KYVyjIqnQMIFhAAGgw1MzUwMDI4NTcxMjIiDKwIUb/A4SuADkKGvyr6AmKKojMqcfQPNjAB/JvmoTE8Sm01jnyYk1Pxm9RIFk9PWCZ4asJJ+fHvye42xJkWSgbtO1Kmp01ceA34vQ9Qo1Xl5coVNUR0ZJFoe/mADuIYpY3YQPbB6Zk+sizSt0auWU2vE8xRlyKFn92fMMVokwW1bDXzwKtaF7rNkKljBOXM0JNFrJW9H/KK7dbixiRdIbka0115J1krFIRG55SmBMwt+xaHtWki6+w6euw2VixqaV1S0xYajyNuYyzFsEe2+C6qubY86T7XFHw9JueL78yG/0tbG1cZZGKyWp31ehkuWGyktgI6hfa79dGm+rjXc6/jVif+LYU5xrrOP7aGc6of5tEI1bboYlNv4kRSaKk+x0CAoF0vw23HdF3K9Yy+F0AOYsy6fAOScUnXuX7JXIbO3p1jQhvhOpA8bKXFscxgVFShhL9pUK3wR9lOHkMYlgl/U3c12QtrTLvRbHvGN1wxyA47ewjeoxIb/J0oXdX0hfbbN7kX8d6dnjDqz/O4BjqmAdugE7Sr3Zkjs8kpRGWEtmyNX1c/v6sMO3s/PnR7EyurtWRMtRSZ5cr+VSXydFkiLBLW9FjvJ7E/wATM6mpMbuT0ldBPOLMfUbD2jW56xJngqlDiP5VpvC+DzSejW3bgTvTPWz4zQx3dwEaT2bhxpEbfOEOXcciFKc/h9DuJ4OKnDT9L6QqziuMHTt8DtcHzmR9hv3MPIaYX/NeXW2Wumtoplku6H0g='
 )
 
 s3 = session.resource('s3')
@@ -32,6 +31,7 @@ df = pd.read_csv(StringIO(csv_content), delimiter=';', encoding='latin1')
 numeric_cols = df.columns[3:]  # Seleciona as colunas a partir da terceira
 df[numeric_cols] = df[numeric_cols].apply(pd.to_numeric, errors='coerce')
 
+#Filtro com dois operadores lógicos
 # Renomear colunas
 df.rename(columns={'IPI - AUTOMÓVEIS': 'IPI_Automoveis'}, inplace=True)
 df['IPI_Automoveis'] = pd.to_numeric(df['IPI_Automoveis'], errors='coerce')
@@ -49,8 +49,9 @@ s3_client.put_object(Bucket=bucket_name, Key=output_file_key01, Body=csv_buffer.
 
 df.to_csv('df_filtrados.csv', sep=';', index=False)
 
-print(f'Arquivo {output_file_key01} enviado para o bicket {bucket_name} com sucesso!')
+print(f'Arquivo {output_file_key01} enviado para o bucket {bucket_name} com sucesso!')
 
+##Função de agregação
 # AGRUPA POR ESTADO E SOMA A IMPORTAÇÃO
 df['IMPOSTO SOBRE IMPORTAÇÃO'] = pd.to_numeric(df['IMPOSTO SOBRE IMPORTAÇÃO'], errors='coerce')
 
@@ -64,9 +65,9 @@ s3_client.put_object(Bucket=bucket_name, Key=output_file_key02, Body=csv_buffer.
 
 df.to_csv('df_agregado.csv', sep=';', index=False)
 
-print(f'Arquivo {output_file_key02} enviado para o bicket {bucket_name} com sucesso!')
+print(f'Arquivo {output_file_key02} enviado para o bucket {bucket_name} com sucesso!')
 
-
+##Função Condicional
 # ESTADOS COM ARRECADAÇÃO DE IRPF É MAIOR QUE IRPJ
 def arrecadacao_IRPF_IRPJ(df):
     return df[df['IRPF'] > df['IRPJ - DEMAIS EMPRESAS']]
@@ -81,11 +82,13 @@ s3_client.put_object(Bucket=bucket_name, Key=output_file_key03, Body=csv_buffer.
 
 df.to_csv('df_IRPF_maior_IRPJ.csv', sep=';', index=False)
 
-print(f'Arquivo {output_file_key03} enviado para o bicket {bucket_name} com sucesso!')
+print(f'Arquivo {output_file_key03} enviado para o bucket {bucket_name} com sucesso!')
 
+#Função de conversão e Função de Agregação
 # CONVERTENDO VALORES PARA MILHÕES
 df.rename(columns={ 'IMPOSTO SOBRE IMPORTAÇÃO': 'Importacao'}, inplace=True)
 
+#Função de String
 def converter_milhoes(valor):
     return valor / 1000000
 
@@ -107,7 +110,7 @@ s3_client.put_object(Bucket=bucket_name, Key=output_file_key04, Body=csv_buffer.
 
 df.to_csv('df_agrupado.csv', sep=';', index=False)
 
-print(f'Arquivo {output_file_key04} enviado para o bicket {bucket_name} com sucesso!')
+print(f'Arquivo {output_file_key04} enviado para o bucket {bucket_name} com sucesso!')
 
 # Função de exemplo para manipulação de strings - Ex: Converter o mês em maiúsculas
 def converter_mes_para_maiusculas(df):
@@ -124,6 +127,6 @@ s3_client.put_object(Bucket=bucket_name, Key=output_file_key05, Body=csv_buffer.
 
 df.to_csv('df_final.csv', sep=';', index=False)
 
-print(f'Arquivo {output_file_key05} enviado para o bicket {bucket_name} com sucesso!')
+print(f'Arquivo {output_file_key05} enviado para o bucket {bucket_name} com sucesso!')
 
 print(f'Upload de DataFrames para o bucket {bucket_name} concluído com sucesso!')
