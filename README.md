@@ -40,7 +40,7 @@
 
 [Sprint 5](https://github.com/biancalls/BiancaLages/tree/main/Sprint_5) 
 
-Sprint 6 -
+[Sprint 6](https://github.com/biancalls/BiancaLages/tree/main/Sprint_6)
 
 Sprint 7 - 
 
