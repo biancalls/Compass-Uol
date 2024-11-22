@@ -14,7 +14,7 @@
 
 **🌐︎ Experiências:** Cursando estagio em CompassUol
 
-**💡 Conhecimentos:** Python, Linux, Git, SQL, Docker 
+**💡 Conhecimentos:** Python, Linux, Git, SQL, Docker, Pyspark 
 
 **😃 Hobbies:** Cozinha, Filmes e Leitura
 
