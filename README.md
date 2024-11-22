@@ -1,6 +1,6 @@
 # Oi, meu chamo **Bianca Lages Lopes da Silva!**
 
-![foto](https://github.com/biancalls/BiancaLages/blob/main/Sprint_1/Evidencias/Imagem%20do%20WhatsApp%20de%202024-08-14%20%C3%A0(s)%2011.30.27_20e7c8e7.jpg)
+<img src="https://github.com/biancalls/BiancaLages/blob/main/Sprint_1/Evidencias/Imagem%20do%20WhatsApp%20de%202024-08-14%20%C3%A0(s)%2011.30.27_20e7c8e7.jpg" alt="Minha Foto" width="200" /><br>
 
 ## **Sobre mim:**
 
