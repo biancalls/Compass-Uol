@@ -8,7 +8,7 @@ O desafio pede à modelagem multidimensional dos dados existentes na Camada Trus
 
 ### **União**
 
-![JOB](../../Sprint_9/Evidencias/Desafio/job.png)
+![JOB](../../Sprint_9/Evidencias/job.png)
 
 A primeira etapa do desafio consistia na união das dados existentes da Camada Trusted, dados esses tratados provindos do arquivo csv "movies.csv" e dos json da pesquisa realizada no TMDB.
 
@@ -77,7 +77,7 @@ df_comum = df_csv.join(df_json, df_csv["titulopincipal"] == df_json["title"], "i
 ````
 A união entre os DataFrame foi baseadan nas colunas titulo Principal do df_csv e title do df_json. Criando o Dataframe df_comum contendo os filmes em comum dos dois dataframes, dando prioridade para os filmes do csv e complementando com as dados do json.
 
-![union](../../Sprint_9/Evidencias/Desafio/df_comum.png)
+![union](../../Sprint_9/Evidencias/df_comum.png)
 *print retirado via AWS CLOUDWATCH*
 
 ### **MODELAGEM DIMENSIONAL**
@@ -101,7 +101,7 @@ df_generos_id.show()
 ````
 A coluna "genero" vindo do df_comum, contem os nomes dos generos dos filmes do dataframe, uma string, pegando os distintos destes e usando o windowspec para criar um id unico para cada genero distinto encontrado no dataframe. Assim, criando a dimensão gênero com o genero e genre_id.
 
-![genero](../../Sprint_9/Evidencias/Desafio/tabela_genero.png)
+![genero](../../Sprint_9/Evidencias/tabela_genero.png)
 *print retirado via AWS CLOUDWATCH*
 
 **DIMENSÃO IDIOMA**
@@ -122,7 +122,7 @@ df_idioma.show()
 ````
 As colunas "language_id" e "language_name" contém os dados de idioma dos filmes presentes no dataframa. A coluna language_id foi renomeada para sigla_language, os dados consistiam nas sigla do idioma como: en,sh. Foi usado o windowspec para criar um id para cada idioma distinto encontrado. Assim, criando a dimensão idioma com o id_idioma, sigla_language, language_name.
 
-![idioma](../../Sprint_9/Evidencias/Desafio/tabela_idioma.png)
+![idioma](../../Sprint_9/Evidencias/tabela_idioma.png)
 *print retirado via AWS CLOUDWATCH*
 
 **DIMENSÃO TEMPO**
@@ -142,7 +142,7 @@ df_tempo = df_tempo.withColumn("id_tempo", row_number().over(windowSpecTempo))
 ````
 A coluna "release_date" do dataframe df_comum, foram extraídos o ano, mês e dia de cada filme do dataframe, usando o windowspec um id para cada data distinta. Assim, temos a dimensão tempo com release-date, ano, mês e dia e id_tempo.
 
-![tempo](../../Sprint_9/Evidencias/Desafio/tabela_tempo.png)
+![tempo](../../Sprint_9/Evidencias/tabela_tempo.png)
 *print retirado do CLOUDWATCH*
 
 **DIMENSÃO FILMES**
@@ -203,7 +203,7 @@ df_filmes.show()
 ````
 As colunas "id_filmes", "tituloprincipal", "titulooriginal", "tempominutos" vieram do df_csv, as colunas "budget", "revenue_int", "vote_average", "popularity" oriundas do df_json, porém todos esses dados estão contidos no df_comum, selecionando essas colunas e adicionando o id_tempo da dimensão tempo , id_language da dimensão idioma, por filme respectivamente. Foi removidos os dados duplicados usando a coluna tituloprincipal para unificação dos dados da dimensão. Assim, criando a dimensão filmes.
 
-![filmes](../../Sprint_9/Evidencias/Desafio/tabela_filmes.png)
+![filmes](../../Sprint_9/Evidencias/tabela_filmes.png)
 *print retirado via AWS CLOUDWATCH*
 
 **RELACIONAL FILME_GENEROS**
@@ -233,12 +233,12 @@ df_filme_generos.show()
 ````
 A criação da dimensão do relacionamento um para muitos entre filme e generos, deu-se pois uma das analises, será nescessario a distinção por generos dos filmes e com essa dimensão possui o id_filmes do filmes e genre_id de cada genero em linhas separadas. Removendo as duplicadas para garantir um relacionamento de um para muitos.
 
-![relacional](../../Sprint_9/Evidencias/Desafio/tabela_relacional.png)
+![relacional](../../Sprint_9/Evidencias/tabela_relacional.png)
 *print retirado via AWS CLOUDWATCH*
 
 ## **DIAGRAMA DIMENSIONAL**
 
-![mdr](../../Sprint_9/Evidencias/Desafio/MDR_filmes.png)
+![mdr](../../Sprint_9/Evidencias/MDR_filmes.png)
 
 ## **BUCKET**
 
@@ -278,15 +278,15 @@ Mandamos os dados modelados em formato parquet para o bucket dentro um diretóri
 
 **DIRETÓRIO UNION**
 
-![UNION](../../Sprint_9/Evidencias/Desafio/bucket_union.png)
+![UNION](../../Sprint_9/Evidencias/bucket_union.png)
 
 **DIRETÓRIO DAS DIMENSÕES**
 
-![DIMENSIONAL](../../Sprint_9/Evidencias/Desafio/dimencional_bucket.png)
+![DIMENSIONAL](../../Sprint_9/Evidencias/dimencional_bucket.png)
 
 **PARQUET DAS DIMENSÕES**
 
-![PARQUET](../../Sprint_9/Evidencias/Desafio/parquet_refined.png)
+![PARQUET](../../Sprint_9/Evidencias/parquet_refined.png)
 
 # **Comentário sobre a sprint**
 
