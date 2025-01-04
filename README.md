@@ -10,11 +10,11 @@
 
 **💻 Curso:** Tecnico em Defesa Cibernetica
 
-**👩 Semestre Atual:** 2 semestre
+**👩 Semestre Atual:** 3 semestre
 
-**🌐︎ Experiências:** Cursando estagio em CompassUol
+**🌐︎ Experiências:** Programa de Bolsas PB CompassUol
 
-**💡 Conhecimentos:** Python, Linux, Git, SQL, Docker, Pyspark 
+**💡 Conhecimentos:** Python, Linux, Git, SQL, Docker, Pyspark, Quicksite, AWS 
 
 **😃 Hobbies:** Cozinha, Filmes e Leitura
 
@@ -48,4 +48,4 @@
 
 [Sprint 9](https://github.com/biancalls/BiancaLages/tree/main/Sprint_9) 
 
-Sprint 10 - 
+[Sprint 10](https://github.com/biancalls/BiancaLages/tree/main/Sprint_10)
