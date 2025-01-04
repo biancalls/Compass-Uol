@@ -60,7 +60,7 @@ df_json = df_json.select("json_id", "json_name", "iso_3166_1", "english_name", "
                          "title", "vote_average", "vote_count", "revenue_int", "revenue_long", "genre_id", "genre_name",
                          "language_name")
 
-# Filtrando os filmes em comum
+# Filtrando os filmes em comum entre as tabelas id da tabela csv e imdb_id da tabela json
 print("Filmes em comum entre CSV e JSON")
 df_comum = df_csv.join(df_json, df_csv["titulopincipal"] == df_json["title"], "inner")
 
@@ -73,7 +73,7 @@ df_generos = df_comum.select("id", explode(col("genero")).alias("genero"))
 # Criar DataFrame com gêneros distintos
 df_generos_distinct = df_generos.select("genero").distinct()
 
-# Adicionar coluna de ID para cada gênero encontrado
+# Adicionar coluna de ID para cada gênero
 windowSpecGenero = Window.orderBy("genero")
 df_generos_id = df_generos_distinct.withColumn("genre_id", row_number().over(windowSpecGenero))
 
@@ -159,7 +159,6 @@ df_filmes = df_filmes.select(
     col("id_language")
 )
 
-#Removendo as duplicadas
 df_filmes = df_filmes.dropDuplicates(["tituloprincipal"])
 
 # Exibir o DataFrame resultante
